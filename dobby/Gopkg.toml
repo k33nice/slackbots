@@ -1,0 +1,20 @@
+
+[[dependencies]]
+  branch = "master"
+  name = "github.com/fsnotify/fsnotify"
+
+[[dependencies]]
+  branch = "master"
+  name = "github.com/hpcloud/tail"
+
+[[dependencies]]
+  branch = "master"
+  name = "github.com/nlopes/slack"
+
+[[dependencies]]
+  branch = "master"
+  name = "github.com/satyrius/gonx"
+
+[[dependencies]]
+  branch = "master"
+  name = "github.com/spf13/viper"

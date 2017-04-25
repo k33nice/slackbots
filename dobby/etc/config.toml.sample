@@ -1,0 +1,54 @@
+# Main configuration file for logs analizer slack bot
+
+tile = "Config"
+
+[owner]
+name = "k33nice"
+
+[oauth]
+token="xxx-000000000000-000000000000-000000000000-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+[bot]
+token = "xxxx-000000000000-xxxxxxxxxxxxxxxxxxxxxxxx"
+
+[services]
+  [services.application]
+    [services.application.main]
+    name = "name"
+    type = "file"
+    path = "/app/logs/app.log"
+    regexp = '\[(?P<Time>[0-9:\- ]+)\] app\.(ERROR|NOTICE|WARNING|ALERT|CRITICAL|EMERGENCY): (?P<Message>.*)'
+    channel = "application-log"
+
+    [services.application.scripts]
+    name = "Application scripts"
+    type = "dir"
+    path = "/app/logs"
+    regexp = '\[(?P<Time>[0-9:\- ]+)\] \w+\.(ERROR|NOTICE|WARNING|ALERT|CRITICAL|EMERGENCY): (?P<Message>.*)'
+    channel = false
+
+  [services.nginx]
+    [services.nginx.boxes]
+    name = "Nginx boxes logs"
+    type = "array"
+    path = ["/var/log/nginx/box1.log", "/var/log/nginx/box2.log", "/var/log/nginx/box3.log"]
+    regexp = '(?P<Time>[0-9:/ ]+).+?(?P<Message>".*")'
+    channel = "nginx-log"
+
+    [services.nginx.api]
+    name = "Nginx API log"
+    type = "file"
+    path = "/var/log/nginx/api.log"
+    regexp = '(?P<Time>[0-9:/ ]+).+?(?P<Message>".*")'
+    channel = "nginx-log"
+
+[api]
+token = "TOKEN"
+port = "33931"
+
+# TODO: Move to separate file
+dictionary = [
+    "service", "start", "stop", "restart", "reload", "force-reload", "status", "configtest", "rotate", "upgrade",
+    "nginx", "memcached", "mysql", "redis", "apache2", "php7.0-fpm", "php7.1-fpm", "php5.6-fpm", "sphinxsearch",
+    "php"
+]

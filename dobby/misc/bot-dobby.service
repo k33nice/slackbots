@@ -1,0 +1,10 @@
+[Unit]
+Description=SlackBot
+
+[Service]
+PIDFile=/tmp/bot-dobby.pid
+User=root
+Group=root
+WorkingDirectory=/
+ExecStart=/bin/bash -c 'bot-dobby'
+Restart=always

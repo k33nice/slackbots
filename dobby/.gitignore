@@ -1,0 +1,6 @@
+.env
+!.env.sample
+build/*
+!build/.gitkeep
+etc/*
+!etc/config.toml.sample
